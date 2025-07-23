@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from './NavigationBar';
 
+
 export const metadata = {
   title: 'Movie Finder',
   description: 'Find your favorite movies!',

@@ -18,7 +18,7 @@ export default function SearchResult({ searchParams }) {
     const [totalPages, setTotalPages] = useState(0);
     const pathname = usePathname();
     let currentPage = parseInt(searchParams?.page || '1');
-    console.log(searchParams)
+
 
     useEffect(() => {
         setLoading(true);
@@ -49,7 +49,6 @@ export default function SearchResult({ searchParams }) {
                         <MoviePagination pathname={pathname} currentPage={currentPage} totalPages={totalPages} />
                     </>
             }
-            {/* <MovieList loading={loading} movies={movies} /> */}
         </>
     )
 }

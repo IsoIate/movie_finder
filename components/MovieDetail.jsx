@@ -1,7 +1,44 @@
 import { Container, Row, Col, Card, Badge, Button } from 'react-bootstrap';
+import axios from 'axios';
 import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons'
+
+library.add(farStar, fasStar)
 
 const MovieDetail = ({ movie, posterUrl }) => {
+
+    let [favorite, setFavorite] = useState(false);
+
+    useEffect(() => {
+        axios.get(`/api/movie?movieId=${movie.id}`)
+            .then((res) => {
+                if (res.data)
+                    setFavorite(true)
+                else
+                    setFavorite(false)
+            })
+            .catch((e) => {
+                alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
+            })
+    }, [])
+
+    const setFavoriteMovie = () => {
+        axios.post('/api/favorite', {
+            movieId: movie.id,
+            isFavorite: !favorite
+        })
+            .then((res) => {
+                setFavorite(!favorite)
+            })
+            .catch((e) => {
+                alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
+            })
+    }
+
     return (
         <>
             <Container className="my-5">
@@ -15,6 +52,15 @@ const MovieDetail = ({ movie, posterUrl }) => {
                             height={750}
                             className="img-fluid rounded shadow"
                         />
+                        <div className='d-flex justify-content-center'>
+                            <Button className='mt-4 mx-auto' variant="secondary" onClick={() => { setFavoriteMovie() }}> 즐겨찾기
+                                {
+                                    favorite === true
+                                        ? <SolidStar />
+                                        : <RegularStar />
+                                }
+                            </Button>
+                        </div>
                     </Col>
 
                     {/* 정보 */}
@@ -59,6 +105,19 @@ const MovieDetail = ({ movie, posterUrl }) => {
                 </Row>
             </Container>
         </>
+    )
+}
+
+
+function SolidStar() {
+    return (
+        <FontAwesomeIcon className='text-warning ms-2' icon="fa-solid fa-star" />
+    )
+}
+
+function RegularStar() {
+    return (
+        <FontAwesomeIcon className='ms-2' icon="fa-regular fa-star" />
     )
 }
 
