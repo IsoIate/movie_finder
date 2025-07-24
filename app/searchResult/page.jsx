@@ -34,8 +34,6 @@ export default function SearchResult({ searchParams }) {
         setLoading(false);
     }, [searchParams])
 
-
-
     return (
         <>
             {

@@ -16,10 +16,9 @@ const MovieDetail = ({ movie, posterUrl }) => {
     useEffect(() => {
         axios.get(`/api/movie?movieId=${movie.id}`)
             .then((res) => {
-                if (res.data)
-                    setFavorite(true)
-                else
-                    setFavorite(false)
+                res.data
+                    ? setFavorite(true)
+                    : setFavorite(false)
             })
             .catch((e) => {
                 alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
@@ -27,8 +26,8 @@ const MovieDetail = ({ movie, posterUrl }) => {
     }, [])
 
     const setFavoriteMovie = () => {
-        axios.post('/api/favorite', {
-            movieId: movie.id,
+        axios.post('/api/movie', {
+            movieId: movie.id.toString(),
             isFavorite: !favorite
         })
             .then((res) => {
@@ -67,7 +66,7 @@ const MovieDetail = ({ movie, posterUrl }) => {
                     <Col md={8}>
                         <h1>{movie.title}</h1>
                         <p className="text-muted">
-                            개봉일: {movie.release_date} | 평점: ⭐ {movie.vote_average}
+                            개봉일: {movie.release_date} | 평점: <FontAwesomeIcon className='text-warning' icon="fa-solid fa-star" /> {movie.vote_average}
                         </p>
 
                         {/* 장르 */}

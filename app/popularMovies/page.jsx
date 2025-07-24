@@ -23,8 +23,10 @@ export default function popularMovies({ searchParams }) {
     useEffect(() => {
         setLoading(true);
 
+        // axios.get(`${BASE_URL}/discover/movie?sort_by=vote_average.desc&vote_count.gte=50&api_key=${API_KEY}&language=ko-KR&page=${currentPage}`)
         axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ko-KR&page=${currentPage}`)
             .then((res) => {
+                // .then((res) => {
                 setMovies(res.data.results);
                 setTotalPages(res.data.total_pages);
                 setLoading(false);

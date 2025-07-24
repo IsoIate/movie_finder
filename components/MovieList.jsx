@@ -20,7 +20,7 @@ const MovieList = ({ loading, movies }) => {
                     <Row>
                         {movies.length > 0 ? (
                             movies.map((movie) => (
-                                <MovieCard key={movie.id} movie={movie} />
+                                <MovieCard key={movie.id} movie={movie} size={3} />
                             ))
                         ) : (
                             <p className="text-center">영화를 찾을 수 없습니다.</p>

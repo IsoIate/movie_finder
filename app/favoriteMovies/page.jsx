@@ -18,9 +18,11 @@ const FavoritesPage = () => {
             try {
                 const res = await axios.get('/api/favorite')
                 const data = res.data;
-                const movieId = data.map(data => data.movieId);
 
-                getFavoriteMovieData(movieId);
+                if (data) {
+                    const movieId = data.map(data => data.movieId);
+                    getFavoriteMovieData(movieId);
+                }
             } catch (e) {
                 alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
             }
@@ -44,12 +46,23 @@ const FavoritesPage = () => {
         getFavoriteMovieId();
     }, []);
 
+    console.log(movieData)
+
     return (
         <>
             <Container className="mt-4">
-                {movieData.map((movie) => (
-                    <FavoriteMovieCard key={movie.id} movie={movie} />
-                ))}
+                {
+                    movieData.length > 0
+                        ?
+                        movieData.map((movie) => (
+                            <FavoriteMovieCard key={movie.id} movie={movie} />
+                        ))
+                        : <>
+                            <div className="text-center my-5">
+                                <p>즐겨찾기 된 영화가 없습니다.</p>
+                            </div>
+                        </>
+                }
             </Container>
         </>
     );
