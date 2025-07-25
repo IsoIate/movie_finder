@@ -1,5 +1,5 @@
 import { connectDB } from "@/util/database";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { timeString, date } from "../common/common"
 
 export default async function handler(request, response) {
