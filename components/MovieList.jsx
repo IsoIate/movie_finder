@@ -26,7 +26,7 @@ const MovieList = ({ loading, movies }) => {
                                 (
                                     <>
                                         <div className='text-center'>
-                                            <Image src={"computer_search_kensaku.png"} style={{ width: "500px" }} />
+                                            <Image src={"computer_search_kensaku.png"} style={{ width: "500px" }} alt='computer_search_kensaku' />
                                         </div>
                                         <h4 className="text-center mt-5">검색 결과가 없습니다. 다른 키워드를 입력해 주세요.</h4>
                                     </>

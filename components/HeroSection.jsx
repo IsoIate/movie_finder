@@ -15,7 +15,7 @@ function HeroSection() {
                         </Button>
                     </Col>
                     <Col md={6} className="text-center mt-4 mt-md-0">
-                        <Image src={"kandou_movie_eigakan.png"} style={{ maxHeight: '300px' }} />
+                        <Image src={"kandou_movie_eigakan.png"} style={{ maxHeight: '300px' }} alt='kandou_movie_eigakan' />
                     </Col>
                 </Row>
             </Container>

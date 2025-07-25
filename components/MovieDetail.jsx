@@ -23,7 +23,7 @@ const MovieDetail = ({ movie, posterUrl }) => {
             .catch((e) => {
                 alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
             })
-    }, [])
+    }, [movie.id])
 
     const setFavoriteMovie = () => {    // 즐겨찾기 된 영화인지 조회
         axios.post('/api/movie', {

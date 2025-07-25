@@ -26,7 +26,7 @@ export default function MovieDetailPage({ params }) {
             .catch((e) => {
                 alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
             });
-    }, [])
+    }, [params.id])
 
 
     return (

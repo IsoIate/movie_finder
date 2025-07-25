@@ -22,7 +22,6 @@ export const authOptions = {
 
             // 로그인 요청시 실행되는코드
             async authorize(credentials) {
-                console.log(credentials)
                 let db = (await clientPromise).db('movieFinder');
                 let user = await db.collection('user_data').findOne({ email: credentials.email })
                 if (!user) {

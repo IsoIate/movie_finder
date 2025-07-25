@@ -1,6 +1,6 @@
 'use client'
 
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons'
@@ -16,7 +16,7 @@ const MovieCarousel = ({ movies }) => {
                 {movies.slice(0, 5).map(movie => (
                     <Carousel.Item key={movie.id} onClick={() => { location.href = `/movie/${movie.id}` }} style={{ cursor: "pointer" }}>
                         <div className="carousel-image-wrapper">
-                            <img
+                            <Image
                                 className="d-block w-100"
                                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                                 alt={movie.title}

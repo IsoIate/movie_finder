@@ -26,13 +26,12 @@ export default function SearchResult({ searchParams }) {
             .then((res) => {
                 setMovies(res.data.results);
                 setTotalPages(res.data.total_pages);
-                console.log(res.data)
             })
             .catch((e) => {
                 alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
             });
         setLoading(false);
-    }, [searchParams])
+    }, [searchParams, currentPage])
 
     return (
         <>

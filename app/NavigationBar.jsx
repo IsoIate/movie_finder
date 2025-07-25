@@ -16,8 +16,6 @@ export default function NavigationBar({ session }) {
     const pathname = usePathname()
     const router = useRouter();
 
-    console.log(pathname)
-
     const movieSearch = (e) => {
         e.preventDefault();
         if (!searchTerm.trim()) return;

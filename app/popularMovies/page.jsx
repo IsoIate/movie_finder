@@ -11,7 +11,7 @@ const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 
-export default function popularMovies({ searchParams }) {
+export default function PopularMovies({ searchParams }) {
 
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ export default function popularMovies({ searchParams }) {
                 alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
             });
 
-    }, [searchParams]);
+    }, [searchParams, currentPage]);
 
     return (
         <>
