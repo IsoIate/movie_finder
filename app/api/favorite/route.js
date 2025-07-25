@@ -2,6 +2,8 @@ import clientPromise from '@/lib/mongodb';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request) {    // 즐겨찾기 된 영화목록 리스트
     try {
         const client = await clientPromise;
