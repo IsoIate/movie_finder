@@ -49,7 +49,6 @@ const Register = () => {
         <Container className="mt-5" style={{ maxWidth: '500px' }}>
             <h2 className="mb-4 text-center">회원가입</h2>
             {error && <Alert variant="danger">{error}</Alert>}
-            {success && <Alert variant="success">{success}</Alert>}
 
             <Form onSubmit={formSubmit}>
                 <Form.Group className="mb-3" controlId="formName">
