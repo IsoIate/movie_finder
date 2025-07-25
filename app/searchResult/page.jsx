@@ -22,7 +22,7 @@ export default function SearchResult({ searchParams }) {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=ko-KR&query=${searchTerm}&page=${currentPage}`)
+        axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=ko-KR&query=${searchTerm ?? ""}&page=${currentPage}`)
             .then((res) => {
                 setMovies(res.data.results);
                 setTotalPages(res.data.total_pages);
@@ -44,7 +44,11 @@ export default function SearchResult({ searchParams }) {
                     </div>
                     : <>
                         <MovieList loading={loading} movies={movies} />
-                        <MoviePagination pathname={pathname} currentPage={currentPage} totalPages={totalPages} />
+                        {
+                            movies.length > 0
+                                ? <MoviePagination pathname={pathname} currentPage={currentPage} totalPages={totalPages} />
+                                : ""
+                        }
                     </>
             }
         </>

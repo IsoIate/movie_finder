@@ -1,10 +1,6 @@
 
 import MovieCard from './MovieCard';
-import {
-    Container,
-    Spinner,
-    Row,
-} from 'react-bootstrap';
+import { Container, Spinner, Row, Image } from 'react-bootstrap';
 
 const MovieList = ({ loading, movies }) => {
 
@@ -18,13 +14,24 @@ const MovieList = ({ loading, movies }) => {
                     </div>
                 ) : (
                     <Row>
-                        {movies.length > 0 ? (
-                            movies.map((movie) => (
-                                <MovieCard key={movie.id} movie={movie} size={3} />
-                            ))
-                        ) : (
-                            <p className="text-center">영화를 찾을 수 없습니다.</p>
-                        )}
+                        {
+                            movies.length > 0
+                                ?
+                                (
+                                    movies.map((movie) => (
+                                        <MovieCard key={movie.id} movie={movie} size={3} />
+                                    ))
+                                )
+                                :
+                                (
+                                    <>
+                                        <div className='text-center'>
+                                            <Image src={"computer_search_kensaku.png"} style={{ width: "500px" }} />
+                                        </div>
+                                        <h4 className="text-center mt-5">검색 결과가 없습니다. 다른 키워드를 입력해 주세요.</h4>
+                                    </>
+                                )
+                        }
                     </Row>
                 )}
             </Container>

@@ -30,7 +30,7 @@ const GenreTabs = () => {
     const fetchGenreMovies = async (genreId) => {
         setLoading(true);
         try {
-            const response = await axios.get(`${BASE_URL}/discover/movie?language=ko-KR`, {
+            const response = await axios.get(`${BASE_URL}/discover/movie?language=ko-KR&vote_count.gte=500`, {
                 params: {
                     api_key: API_KEY,
                     with_genres: genreId,
@@ -38,8 +38,8 @@ const GenreTabs = () => {
                 },
             });
             setMovies(response.data.results);
-        } catch (error) {
-            console.error('장르별 영화 불러오기 실패:', error);
+        } catch (e) {
+            alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
         }
         setLoading(false);
     };

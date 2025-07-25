@@ -13,41 +13,35 @@ const Register = () => {
     });
 
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-
-    const handleChange = (e) => {
+    const formDataChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const formSubmit = (e) => {
         e.preventDefault();
         const { name, email, password, confirmPassword } = formData;
         const postData = { name, email, password };
 
-        // 유효성 검사
         if (!name || !email || !password || !confirmPassword) {
             setError('모든 항목을 입력해주세요.');
-            setSuccess('');
             return;
         }
 
         if (password !== confirmPassword) {
             setError('비밀번호가 일치하지 않습니다.');
-            setSuccess('');
             return;
         }
 
         axios.post("/api/register", postData)
             .then((res) => {
-                setSuccess('회원가입이 완료되었습니다! \n잠시 후 메인페이지로 이동합니다.');
                 setError('');
                 setTimeout(() => {
                     location.href = ("/");
                 }, 3000)
             })
             .catch((e) => {
-
+                alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
             })
     };
 
@@ -57,7 +51,7 @@ const Register = () => {
             {error && <Alert variant="danger">{error}</Alert>}
             {success && <Alert variant="success">{success}</Alert>}
 
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={formSubmit}>
                 <Form.Group className="mb-3" controlId="formName">
                     <Form.Label>이름</Form.Label>
                     <Form.Control
@@ -65,7 +59,7 @@ const Register = () => {
                         placeholder="이름을 입력하세요"
                         name="name"
                         value={formData.name}
-                        onChange={handleChange}
+                        onChange={formDataChange}
                     />
                 </Form.Group>
 
@@ -76,7 +70,7 @@ const Register = () => {
                         placeholder="이메일을 입력하세요"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={formDataChange}
                     />
                 </Form.Group>
 
@@ -87,7 +81,7 @@ const Register = () => {
                         placeholder="비밀번호"
                         name="password"
                         value={formData.password}
-                        onChange={handleChange}
+                        onChange={formDataChange}
                     />
                 </Form.Group>
 
@@ -98,7 +92,7 @@ const Register = () => {
                         placeholder="비밀번호 확인"
                         name="confirmPassword"
                         value={formData.confirmPassword}
-                        onChange={handleChange}
+                        onChange={formDataChange}
                     />
                 </Form.Group>
 

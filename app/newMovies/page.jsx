@@ -25,7 +25,6 @@ export default function newMovies({ searchParams }) {
                 setMovies(res.data.results);
                 setTotalPages(res.data.total_pages);
                 setLoading(false);
-                console.log(res.data.results)
             })
             .catch((e) => {
                 alert(`에러가 발생했습니다.\n에러 : ${e.message}`)

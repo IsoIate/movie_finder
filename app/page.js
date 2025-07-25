@@ -6,6 +6,7 @@ import axios from 'axios';
 import './styles/globals.css';
 import GenreTabs from "@/components/GenreTabs";
 import MovieCarousel from "@/components/MovieCarousel";
+import HeroSection from "@/components/HeroSection";
 
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -38,6 +39,7 @@ export default function HomePage() {
           </div>
           : <>
             <Container>
+              <HeroSection></HeroSection>
               <MovieCarousel movies={movies}></MovieCarousel>
               <GenreTabs></GenreTabs>
             </Container>

@@ -17,7 +17,7 @@ export default function MovieDetailPage({ params }) {
 
     useEffect(() => {
         axios.get(`https://api.themoviedb.org/3/movie/${params.id}?api_key=${API_KEY}&language=ko-KR`, {
-            cache: 'no-store', // 최신 정보 유지
+            cache: 'no-store',
         })
             .then((res) => {
                 setMovie(res.data)

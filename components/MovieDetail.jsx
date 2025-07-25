@@ -13,7 +13,7 @@ const MovieDetail = ({ movie, posterUrl }) => {
 
     let [favorite, setFavorite] = useState(false);
 
-    useEffect(() => {
+    useEffect(() => {   // 영화 상세정보 조회
         axios.get(`/api/movie?movieId=${movie.id}`)
             .then((res) => {
                 res.data
@@ -25,7 +25,7 @@ const MovieDetail = ({ movie, posterUrl }) => {
             })
     }, [])
 
-    const setFavoriteMovie = () => {
+    const setFavoriteMovie = () => {    // 즐겨찾기 된 영화인지 조회
         axios.post('/api/movie', {
             movieId: movie.id.toString(),
             isFavorite: !favorite
@@ -42,7 +42,6 @@ const MovieDetail = ({ movie, posterUrl }) => {
         <>
             <Container className="my-5">
                 <Row>
-                    {/* 포스터 */}
                     <Col md={4}>
                         <Image
                             src={posterUrl}
@@ -62,14 +61,12 @@ const MovieDetail = ({ movie, posterUrl }) => {
                         </div>
                     </Col>
 
-                    {/* 정보 */}
                     <Col md={8}>
                         <h1>{movie.title}</h1>
                         <p className="text-muted">
                             개봉일: {movie.release_date} | 평점: <FontAwesomeIcon className='text-warning' icon="fa-solid fa-star" /> {movie.vote_average}
                         </p>
 
-                        {/* 장르 */}
                         <div className="mb-3">
                             {movie.genres.map((genre) => (
                                 <Badge key={genre.id} bg="info" className="me-2">
@@ -78,7 +75,6 @@ const MovieDetail = ({ movie, posterUrl }) => {
                             ))}
                         </div>
 
-                        {/* 개요 */}
                         <Card>
                             <Card.Body>
                                 <Card.Title>줄거리</Card.Title>
@@ -88,7 +84,6 @@ const MovieDetail = ({ movie, posterUrl }) => {
                             </Card.Body>
                         </Card>
 
-                        {/* 홈페이지 링크 */}
                         {movie.homepage && (
                             <Button
                                 variant="primary"

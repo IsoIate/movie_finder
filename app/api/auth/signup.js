@@ -17,7 +17,7 @@ export default async function handler(request, response) {
         request.body.registTime = timeString;
 
         await db.collection('user_data').insertOne(request.body);
-        response.status(200).json('가입성공');
+        response.status(200).json('정상적으로 회원가입 되었습니다.');
       }
       else
         response.status(500).json('이미 존재하는 이메일입니다.');

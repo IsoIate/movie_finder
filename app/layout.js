@@ -3,6 +3,10 @@ import NavigationBar from './NavigationBar';
 import { Providers } from './providers';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false;
+
 
 export const metadata = {
   title: 'Movie Finder',

@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 export async function POST(request) {
 
     const body = await request.json();
-    console.log(body)
 
     if (body.name != '' && body.email != '' && body.password != '') {
         const hash = await bcrypt.hash(body.password, 10);

@@ -39,8 +39,6 @@ const MovieCard = ({ movie, size }) => {
                 </Link>
             </Card>
         </Col>
-
-
     );
 };
 

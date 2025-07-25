@@ -12,7 +12,7 @@ const MovieCarousel = ({ movies }) => {
     return (
         <>
             <h3 className="my-3"> <FontAwesomeIcon className='me-2 text-danger' icon="fa-solid fa-arrow-trend-up" />인기 급상승 영화 </h3>
-            <Carousel >
+            <Carousel className='mb-5'>
                 {movies.slice(0, 5).map(movie => (
                     <Carousel.Item key={movie.id} onClick={() => { location.href = `/movie/${movie.id}` }} style={{ cursor: "pointer" }}>
                         <div className="carousel-image-wrapper">

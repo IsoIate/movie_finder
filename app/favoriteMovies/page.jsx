@@ -46,8 +46,6 @@ const FavoritesPage = () => {
         getFavoriteMovieId();
     }, []);
 
-    console.log(movieData)
-
     return (
         <>
             <Container className="mt-4">
