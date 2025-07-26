@@ -2,6 +2,9 @@
 # 0. Get Started (서비스 시작)
 <a href="https://movie-finder-e21nn28te-isolates-projects.vercel.app/" > MovieFinder <a/>
 
+<br/>
+<br/>
+
 # 1. Project Overview (프로젝트 개요)
 - 프로젝트 이름: Movie Finder
 - 프로젝트 설명: React와 Nextjs, MongoDB를 학습한 뒤 복습 및 확실한 체득을 위해 진행한 개인 프로젝트 
