@@ -14,13 +14,12 @@ export async function POST(request) {
 
         if (!isEmail) {
             await db.collection('user_data').insertOne(body);
-            return new Response(JSON.stringify({ message: '가입완료', data: body }), {
+            return new Response(JSON.stringify({ message: '회원가입 완료', data: body }), {
                 status: 200,
                 headers: { 'Content-Type': 'application/json' },
             });
         }
         else {
-
             return new Response(JSON.stringify({ error: '이미 존재하는 이메일입니다.' }), {
                 status: 400,
                 headers: { 'Content-Type': 'application/json' },

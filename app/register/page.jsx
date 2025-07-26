@@ -13,6 +13,7 @@ const Register = () => {
     });
 
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const formDataChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
@@ -25,23 +26,35 @@ const Register = () => {
 
         if (!name || !email || !password || !confirmPassword) {
             setError('모든 항목을 입력해주세요.');
+            setSuccess('');
+            return;
+        }
+
+        if (name.length < 4 || password.length < 4 || confirmPassword.length < 4) {
+            setError('이름, 패스워드는 최소 4자 이상이어야 합니다.');
+            setSuccess('');
             return;
         }
 
         if (password !== confirmPassword) {
             setError('비밀번호가 일치하지 않습니다.');
+            setSuccess('');
             return;
         }
 
         axios.post("/api/register", postData)
             .then((res) => {
+                setSuccess(`회원가입이 완료되었습니다! \n잠시 후 메인페이지로 이동합니다.`);
                 setError('');
                 setTimeout(() => {
                     location.href = ("/");
                 }, 3000)
             })
             .catch((e) => {
-                alert(`에러가 발생했습니다.\n에러 : ${e.message}`)
+                if (e.response)
+                    alert(`에러가 발생했습니다.\n${e.response.data.error}`)
+                else
+                    alert(`에러가 발생했습니다.\n${e.message}`)
             })
     };
 
@@ -49,6 +62,7 @@ const Register = () => {
         <Container className="mt-5" style={{ maxWidth: '500px' }}>
             <h2 className="mb-4 text-center">회원가입</h2>
             {error && <Alert variant="danger">{error}</Alert>}
+            {success && <Alert variant="success">{success}</Alert>}
 
             <Form onSubmit={formSubmit}>
                 <Form.Group className="mb-3" controlId="formName">

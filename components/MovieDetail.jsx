@@ -64,7 +64,7 @@ const MovieDetail = ({ movie, posterUrl }) => {
                     <Col md={8}>
                         <h1>{movie.title}</h1>
                         <p className="text-muted">
-                            개봉일: {movie.release_date} | 평점: <FontAwesomeIcon className='text-warning' icon="fa-solid fa-star" /> {movie.vote_average}
+                            평점: <FontAwesomeIcon className='text-warning' icon="fa-solid fa-star" /> {movie.vote_average} | 개봉일: {movie.release_date}
                         </p>
 
                         <div className="mb-3">

@@ -15,7 +15,7 @@ library.add(fasStar, faCalendarDays)
 const MovieCard = ({ movie, size }) => {
     const posterUrl = movie.poster_path
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-        : '/no-image.png';
+        : '/no_image.jpg';
 
     return (
         <Col md={size} className="mb-4">
