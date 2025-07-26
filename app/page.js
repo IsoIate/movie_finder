@@ -43,6 +43,8 @@ export default function HomePage() {
               <MovieCarousel movies={movies}></MovieCarousel>
               <GenreTabs></GenreTabs>
             </Container>
+
+
           </>
       }
     </>

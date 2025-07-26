@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import Footer from './footer';
 config.autoAddCss = false;
 
 
@@ -20,8 +21,13 @@ const RootLayout = async ({ children }) => {
     <html lang="en">
       <body>
         <Providers>
-          <NavigationBar session={session} />
-          {children}
+          <div className="d-flex flex-column min-vh-100">
+            <main className="flex-grow-1">
+              <NavigationBar session={session} />
+              {children}
+            </main>
+            <Footer></Footer>
+          </div>
         </Providers>
       </body>
     </html>
