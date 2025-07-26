@@ -52,7 +52,7 @@ const Register = () => {
             })
             .catch((e) => {
                 if (e.response)
-                    alert(`에러가 발생했습니다.\n${e.response.data.error}`)
+                    setError(`${e.response.data.error}`);
                 else
                     alert(`에러가 발생했습니다.\n${e.message}`)
             })
