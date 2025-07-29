@@ -7,7 +7,8 @@
 
 # 1. Project Overview (프로젝트 개요)
 - 프로젝트 이름: Movie Finder
-- 프로젝트 설명: React와 Nextjs, MongoDB를 학습한 뒤 복습 및 확실한 체득을 위해 진행한 개인 프로젝트 
+- 프로젝트 설명: 이 프로젝트는 TMDB API를 활용해 영화 검색 및 조회 기능을 구현한 React/Next.js 기반의 웹앱입니다.<br/>
+  검색창과 장르 필터, 인기·최신 영화 탭을 통해 사용자 UX 흐름을 고려했으며, 실시간 API fetch 및 간단한 라우팅 구조를 구현했습니다.
 
 <br/>
 <br/>
